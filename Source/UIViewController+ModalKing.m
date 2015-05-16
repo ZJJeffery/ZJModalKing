@@ -14,31 +14,47 @@
 @implementation UIViewController (ModalKing)
 
 const void *animationDelegateKey = "animationDelegate";
-
+/**
+ *  runtime动态加载执行动画的代理属性的set方法
+ */
 - (void)setAnimationDelegate:(ZJAnimationDelegate *)animationDelegate {
-    
-    /**
-     参数：
-     1. 属性的持有者
-     2. 属性的键值
-     3. 属性的数值
-     4. 属性的引用类型
-     */
     objc_setAssociatedObject(self, animationDelegateKey, animationDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
+/**
+ *  runtime动态加载执行动画的代理属性的get方法
+ */
 - (ZJAnimationDelegate *)animationDelegate {
     return objc_getAssociatedObject(self, animationDelegateKey);
 }
 
--(void)mk_presentViewController:(UIViewController *)modalVC WithPresentFrame:(CGRect)presentFrame WithPresentAnimation:(NSTimeInterval (^)(UIView *view))presentAnimation AndDismissAnimation:(NSTimeInterval (^)(UIView *view))dismissAnimation{
+-(void)mk_presentViewController:(UIViewController *)modalVC
+               withPresentFrame:(CGRect)presentFrame
+           withPresentAnimation:(NSTimeInterval (^)(UIView *view))presentAnimation
+            withDismissAnimation:(NSTimeInterval (^)(UIView *view))dismissAnimation
+                 withCompletion:(void (^)(void))completion
+{
     self.animationDelegate = [ZJAnimationDelegate new];
     modalVC.transitioningDelegate = (id)self.animationDelegate;
     modalVC.modalPresentationStyle = UIModalPresentationCustom;
     self.animationDelegate.presentFrame = presentFrame;
     self.animationDelegate.presentAnimation = presentAnimation;
     self.animationDelegate.dismissAnimation = dismissAnimation;
-    [self presentViewController:modalVC animated:YES completion:nil];
+    [self presentViewController:modalVC animated:YES completion:completion];
 }
 
+-(void)mk_presentViewControllerWithDummingView:(UIViewController *)modalVC
+                              withPresentFrame:(CGRect)presentFrame
+                          withPresentAnimation:(NSTimeInterval (^)(UIView *view))presentAnimation
+                          withDismissAnimation:(NSTimeInterval (^)(UIView *view))dismissAnimation
+                                withCompletion:(void (^)(void))completion
+{
+    self.animationDelegate = [ZJAnimationDelegate new];
+    self.animationDelegate.needCover = YES;
+    modalVC.transitioningDelegate = (id)self.animationDelegate;
+    modalVC.modalPresentationStyle = UIModalPresentationCustom;
+    self.animationDelegate.presentFrame = presentFrame;
+    self.animationDelegate.presentAnimation = presentAnimation;
+    self.animationDelegate.dismissAnimation = dismissAnimation;
+    [self presentViewController:modalVC animated:YES completion:completion];
+}
 @end

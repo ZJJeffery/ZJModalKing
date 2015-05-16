@@ -10,4 +10,5 @@
 
 @interface ZJPresentationController : UIPresentationController
 @property (nonatomic, assign) CGRect presentFrame;
+@property (nonatomic, assign,getter=isNeedCover) BOOL needCover;
 @end

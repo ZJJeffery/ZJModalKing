@@ -17,6 +17,7 @@
 -(UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source{
     ZJPresentationController *pc =  [[ZJPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
     pc.presentFrame = self.presentFrame;
+    pc.needCover = self.isNeedCover;
     return pc;
 }
 

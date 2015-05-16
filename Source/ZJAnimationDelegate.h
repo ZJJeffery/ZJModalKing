@@ -12,4 +12,5 @@
 @property (nonatomic, assign) CGRect presentFrame;
 @property (nonatomic, copy) NSTimeInterval (^presentAnimation)(UIView *);
 @property (nonatomic, copy) NSTimeInterval (^dismissAnimation)(UIView *);
+@property (nonatomic, assign,getter=isNeedCover) BOOL needCover;
 @end
