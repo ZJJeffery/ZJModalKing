@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ZJModalKing"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "Easy custom Modal transition"
   s.homepage     = "https://github.com/ZJJeffery/ZJModalKing"
   s.license      = "MIT"
