@@ -33,7 +33,7 @@ const void *animationDelegateKey = "animationDelegate";
 
 -(void)mk_presentViewController:(UIViewController *)modalVC WithPresentFrame:(CGRect)presentFrame WithPresentAnimation:(NSTimeInterval (^)(UIView *view))presentAnimation AndDismissAnimation:(NSTimeInterval (^)(UIView *view))dismissAnimation{
     self.animationDelegate = [ZJAnimationDelegate new];
-    modalVC.transitioningDelegate = self.animationDelegate;
+    modalVC.transitioningDelegate = (id)self.animationDelegate;
     modalVC.modalPresentationStyle = UIModalPresentationCustom;
     self.animationDelegate.presentFrame = presentFrame;
     self.animationDelegate.presentAnimation = presentAnimation;

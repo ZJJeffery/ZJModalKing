@@ -7,5 +7,5 @@ Pod::Spec.new do |s|
   s.author             = { "Jiajun Zheng" => "359191701@qq.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/ZJJeffery/ZJModalKing.git", :tag => s.version }
-  s.source_files  = "Source/*.*”
+  s.source_files  = "Source/*.*"
 end
