@@ -56,6 +56,7 @@ There are two methods for modal:
 * 第一种是普通情况，也就是使用者自己在视图控制器内部恰当的控件上实现dismiss的方法调用
 * 第二种是特殊情况，可以类似菜单效果，框架提供了一个透明的遮罩在modal视图的后面，框架提供了点击遮罩可以自动dismiss的效果。
 
+```
 /**
  *  无遮罩方法
  *
@@ -95,3 +96,4 @@ There are two methods for modal:
            withPresentAnimation:(NSTimeInterval (^)(UIView *view))presentAnimation
            withDismissAnimation:(NSTimeInterval (^)(UIView *view))dismissAnimation
                  withCompletion:(void (^)(void))completion;
+```
