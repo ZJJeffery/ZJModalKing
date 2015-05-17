@@ -16,10 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor colorWithRed:0.366 green:0.660 blue:1.000 alpha:1.000];
     UIButton *btn = [[UIButton alloc] init];
-    [btn setTitle:@"Close" forState:UIControlStateNormal];
-    [btn setBackgroundColor:[UIColor blueColor]];
+    [btn setTitle:@"Dismiss" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(closeClick) forControlEvents:UIControlEventTouchUpInside];
     self.closeBtn = btn;
     [self.view addSubview:btn];

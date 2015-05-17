@@ -27,24 +27,27 @@
 // 有dumming界面的跳转可以通过点击非跳转界面进行关闭
 - (IBAction)modalWithDummingClick {
     UIViewController *modalVc = [[UIViewController alloc] init];
-    modalVc.view.backgroundColor = [UIColor blueColor];
-    CGRect frame = CGRectMake(50, 100, 200, 300);
+    modalVc.view.backgroundColor = [UIColor colorWithRed:0.476 green:0.478 blue:1.000 alpha:1.000];
+    modalVc.view.layer.cornerRadius = 20;
+    modalVc.view.layer.masksToBounds = YES;
+    CGRect frame = CGRectMake((self.view.frame.size.width - 250) * 0.5, (self.view.frame.size.height - 350) * 0.5, 250, 350);
     
     [self mk_presentViewControllerWithDummingView:modalVc withPresentFrame:frame withPresentAnimation:^NSTimeInterval(UIView *view) {
         // 动画部分
         NSTimeInterval time = 2.0;
-        view.transform =  CGAffineTransformMakeScale(1, 0);
+        view.transform =  CGAffineTransformMakeTranslation(0, - self.view.frame.size.height + 350);
+
         view.layer.anchorPoint = CGPointMake(0.5, 0);
         [UIView animateWithDuration:time delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:5.0 options:UIViewAnimationOptionTransitionNone animations:^{
-            view.transform = CGAffineTransformMakeScale(1, 1);
+            view.transform = CGAffineTransformMakeTranslation(0, 0);
+
         } completion:nil];
         return time;
     } withDismissAnimation:^NSTimeInterval(UIView *view) {
         // 动画部分
-        NSTimeInterval time = 1.0;
-        view.layer.anchorPoint = CGPointMake(0.5, 0);
+        NSTimeInterval time = 1;
         [UIView animateWithDuration:time animations:^{
-            view.transform =  CGAffineTransformMakeScale(1, 0.01);
+            view.transform =  CGAffineTransformMakeTranslation(0, -3500);
         }];
         return time;
     } withCompletion:nil];
@@ -63,7 +66,7 @@
         } completion:nil];
         return time;
     } withDismissAnimation:^NSTimeInterval(UIView *view) {
-        NSTimeInterval time = 1.0;
+        NSTimeInterval time = 0.5;
         view.layer.anchorPoint = CGPointMake(0.5, 0);
         [UIView animateWithDuration:time animations:^{
             view.transform =  CGAffineTransformMakeScale(1, 0.01);
