@@ -33,7 +33,9 @@ const void *animationDelegateKey = "animationDelegate";
             withDismissAnimation:(NSTimeInterval (^)(UIView *view))dismissAnimation
                  withCompletion:(void (^)(void))completion
 {
-    self.animationDelegate = [ZJAnimationDelegate new];
+    if (self.animationDelegate == nil) {
+        self.animationDelegate = [ZJAnimationDelegate new];
+    }
     modalVC.transitioningDelegate = (id)self.animationDelegate;
     modalVC.modalPresentationStyle = UIModalPresentationCustom;
     self.animationDelegate.presentFrame = presentFrame;
@@ -48,7 +50,9 @@ const void *animationDelegateKey = "animationDelegate";
                           withDismissAnimation:(NSTimeInterval (^)(UIView *view))dismissAnimation
                                 withCompletion:(void (^)(void))completion
 {
-    self.animationDelegate = [ZJAnimationDelegate new];
+    if (self.animationDelegate == nil) {
+        self.animationDelegate = [ZJAnimationDelegate new];
+    }
     self.animationDelegate.needCover = YES;
     modalVC.transitioningDelegate = (id)self.animationDelegate;
     modalVC.modalPresentationStyle = UIModalPresentationCustom;

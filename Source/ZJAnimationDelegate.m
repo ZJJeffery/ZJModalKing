@@ -34,14 +34,13 @@
 #pragma mark - UIViewControllerAnimatedTransitioning方法
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext;
 {
-    return 5.0;
+    return 0.0;
 }
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
 {
     if (self.isPresenting) {
         UIView *view = [transitionContext viewForKey:UITransitionContextToViewKey];
         [[transitionContext containerView] addSubview:view];
-        // 动画部分
         NSTimeInterval time = self.presentAnimation(view);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [transitionContext completeTransition:YES];
@@ -53,14 +52,6 @@
             [transitionContext completeTransition:YES];
             [view removeFromSuperview];
         });
-        
-        //        [UIView animateWithDuration:2 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:5.0 options:UIViewAnimationOptionTransitionNone animations:^{
-        //            view.transform = CGAffineTransformMakeScale(1, 0);
-        //            NSLog(@"%@",view);
-        //        } completion:^(BOOL finished) {
-        //            
-        //
-        //        }];
     }
 }
 @end
