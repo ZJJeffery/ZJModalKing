@@ -12,7 +12,7 @@ There are two methods for modal:
 
 
 
-```
+```objectivec
 /**
  *  First way without dumming view
  *

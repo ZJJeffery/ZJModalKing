@@ -52,4 +52,5 @@
            withPresentAnimation:(NSTimeInterval (^)(UIView *view))presentAnimation
            withDismissAnimation:(NSTimeInterval (^)(UIView *view))dismissAnimation
                  withCompletion:(void (^)(void))completion;
+
 @end

@@ -66,10 +66,10 @@
         } completion:nil];
         return time;
     } withDismissAnimation:^NSTimeInterval(UIView *view) {
-        NSTimeInterval time = 0.5;
-        view.layer.anchorPoint = CGPointMake(0.5, 0);
+        // 动画部分
+        NSTimeInterval time = 1;
         [UIView animateWithDuration:time animations:^{
-            view.transform =  CGAffineTransformMakeScale(1, 0.01);
+            view.transform =  CGAffineTransformMakeTranslation(0, -3500);
         }];
         return time;
     } withCompletion:nil];
