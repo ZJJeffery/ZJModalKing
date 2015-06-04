@@ -1,4 +1,6 @@
 # ZJModalKing
+##Demo
+![sample](http://img.blog.csdn.net/20150604142902535)
 
 ###Constom Modal Transition Animation Framework
 
